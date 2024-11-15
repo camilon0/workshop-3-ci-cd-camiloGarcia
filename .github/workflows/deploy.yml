@@ -60,7 +60,7 @@ jobs:
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }} 
         run: | 
           curl -X POST \ 
-          --url https://api.sendgrid.com/v3/mail/send \ 
+          --url https://api.sendgrid.com/v3/mail/send/ \ 
           -H "Authorization: Bearer $SENDGRID_API_KEY" \ 
           -H "Content-Type: application/json" \ 
           -d '{ 
