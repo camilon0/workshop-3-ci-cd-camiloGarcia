@@ -59,18 +59,19 @@ jobs:
           TO_EMAIL: ${{ secrets.TO_EMAIL }} 
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }} 
         run: | 
-          curl -X POST \ 
-             --url "https://api.sendgrid.com/v3/mail/send" \ 
-             -H "Authorization: Bearer $SENDGRID_API_KEY" \ 
-             -H "Content-Type: application/json" \ 
-             -d '{ 
-                "personalizations": [{ 
-                  "to": [{"email": "'$TO_EMAIL'"}], 
-                  "subject": "GitHub Actions Job Failed" 
-                }], 
-                "from": {"email": "'$FROM_EMAIL'"}, 
-                "content": [{ 
-                  "type": "text/plain", 
-                  "value": "El flujo de trabajo en GitHub Actions falló. Por favor revisa los detalles en la pestaña de Actions en GitHub." 
-                }] 
-              }' 
+          curl -X POST \
+              --url "https://api.sendgrid.com/v3/mail/send" \
+              -H "Authorization: Bearer $SENDGRID_API_KEY" \
+              -H "Content-Type: application/json" \
+              -d '{
+           "personalizations": [{
+             "to": [{"email": "'"$TO_EMAIL"'"}],
+             "subject": "GitHub Actions Job Failed"
+             }],
+              "from": {"email": "'"$FROM_EMAIL"'"},
+              "content": [{
+              "type": "text/plain",
+              "value": "El flujo de trabajo en GitHub Actions falló. Por favor revisa los detalles en la pestaña de Actions en GitHub."
+              }]
+              }'
+ 
